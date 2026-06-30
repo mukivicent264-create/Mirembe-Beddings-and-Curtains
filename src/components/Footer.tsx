@@ -1,5 +1,4 @@
 import { Instagram, Facebook, Twitter, ArrowRight, Mail, Linkedin } from "lucide-react";
-import logo from "../assets/logo.png";
 
 export default function Footer() {
   return (
@@ -48,7 +47,12 @@ export default function Footer() {
           {/* Column 1: Brand Info */}
           <div className="col-span-2 lg:col-span-2 flex flex-col pr-8">
             <a href="#" className="inline-block mb-6 bg-white p-4 rounded-xl">
-              <img src={logo} alt="Mirembe" className="h-20 md:h-24 w-auto" />
+              <img 
+                src="https://i.postimg.cc/C1dYyyWt/file-000000005aac71f4bb952c48a699e996.png" 
+                alt="Mirembe" 
+                className="h-20 md:h-24 w-auto object-contain" 
+                referrerPolicy="no-referrer"
+              />
             </a>
             <p className="text-white/60 text-sm leading-relaxed mb-8 max-w-sm">
               Bringing comfort, luxury, and timeless elegance to homes across
