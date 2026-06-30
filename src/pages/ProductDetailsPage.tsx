@@ -27,7 +27,11 @@ const containerVariants = {
   }
 };
 
-export default function ProductDetailsPage() {
+interface ProductDetailsPageProps {
+  onAddToCart?: () => void;
+}
+
+export default function ProductDetailsPage({ onAddToCart }: ProductDetailsPageProps) {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   
@@ -140,7 +144,10 @@ export default function ProductDetailsPage() {
               </button>
               
               <button 
-                onClick={() => alert('Added to cart!')}
+                onClick={() => {
+                  if (onAddToCart) onAddToCart();
+                  // alert('Added to cart!');
+                }}
                 className="flex-[2] inline-flex items-center justify-center gap-2 bg-rose text-white px-4 py-4 rounded-sm text-xs sm:text-sm font-bold tracking-widest uppercase hover:bg-rose/90 hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 Add to Cart
@@ -169,10 +176,10 @@ export default function ProductDetailsPage() {
                 <motion.div 
                   key={relatedProduct.id} 
                   variants={cardVariants}
-                  className="group flex flex-col cursor-pointer"
+                  className="group flex flex-col cursor-pointer relative"
                 >
+                  <Link to={`/products/${relatedProduct.id}`} className="absolute inset-0 z-20"></Link>
                   <div className="relative overflow-hidden aspect-[4/5] rounded-2xl mb-3 sm:mb-5 bg-white shadow-sm group-hover:shadow-lg transition-shadow duration-500">
-                    <Link to={`/products/${relatedProduct.id}`} className="absolute inset-0 z-20"></Link>
                     <img 
                       loading="lazy"
                       src={relatedProduct.image} 
@@ -201,7 +208,7 @@ export default function ProductDetailsPage() {
                         onClick={(e) => {
                           e.preventDefault();
                           e.stopPropagation();
-                          alert('Added to cart!');
+                          if (onAddToCart) onAddToCart();
                         }}
                         className="relative z-30 bg-pink-100 hover:bg-rose text-charcoal hover:text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-sm text-[8px] sm:text-[10px] font-bold tracking-widest uppercase transition-colors shadow-sm w-full xl:w-auto text-center flex items-center justify-center"
                       >

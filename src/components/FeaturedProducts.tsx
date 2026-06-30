@@ -100,7 +100,7 @@ export default function FeaturedProducts({
                   variants={cardVariants}
                   className="group relative overflow-hidden aspect-[4/3] cursor-pointer rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500"
                 >
-                  <Link to={`/products/${product.id}`} className="absolute inset-0 z-20"></Link>
+                  <Link to={`/products/${product.id}`} className="absolute inset-0 z-40"></Link>
                   <img 
                     loading="lazy"
                     src={product.image} 

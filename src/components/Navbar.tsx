@@ -6,9 +6,10 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 interface NavbarProps {
   searchQuery: string;
   onSearchChange: (query: string) => void;
+  cartCount?: number;
 }
 
-export default function Navbar({ searchQuery, onSearchChange }: NavbarProps) {
+export default function Navbar({ searchQuery, onSearchChange, cartCount = 0 }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -213,7 +214,7 @@ export default function Navbar({ searchQuery, onSearchChange }: NavbarProps) {
                 <button className="hover:text-rose transition-colors"><User className="w-5 h-5" /></button>
                 <a href="https://wa.me/256700000000" target="_blank" rel="noreferrer" className="relative group mr-2">
                   <ShoppingBag className="w-5 h-5 group-hover:text-rose transition-colors" />
-                  <span className="absolute -top-2 -right-2 w-4 h-4 bg-charcoal text-white text-[10px] font-bold rounded-sm flex items-center justify-center">0</span>
+                  {cartCount > 0 && <span className="absolute -top-2 -right-2 w-4 h-4 bg-charcoal text-white text-[10px] font-bold rounded-sm flex items-center justify-center">{cartCount}</span>}
                 </a>
                 <a href="https://wa.me/256700000000" target="_blank" rel="noreferrer" className="bg-rose text-white px-5 py-2.5 text-xs font-bold tracking-widest uppercase hover:bg-rose/90 transition-colors shadow-sm rounded-sm whitespace-nowrap">
                   WhatsApp Order
@@ -231,7 +232,7 @@ export default function Navbar({ searchQuery, onSearchChange }: NavbarProps) {
                   </button>
                   <a href="https://wa.me/256700000000" target="_blank" rel="noreferrer" className="relative mr-2">
                     <ShoppingBag className="w-5 h-5 text-charcoal" />
-                    <span className="absolute -top-2 -right-2 w-4 h-4 bg-charcoal text-white text-[10px] font-bold rounded-sm flex items-center justify-center">0</span>
+                    {cartCount > 0 && <span className="absolute -top-2 -right-2 w-4 h-4 bg-charcoal text-white text-[10px] font-bold rounded-sm flex items-center justify-center">{cartCount}</span>}
                   </a>
                 </div>
                 <button onClick={() => {

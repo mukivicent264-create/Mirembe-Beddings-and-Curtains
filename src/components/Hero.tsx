@@ -76,7 +76,7 @@ export default function Hero() {
         >
             <div className="absolute inset-0 bg-rose/20 blur-3xl mix-blend-screen transform translate-x-10 translate-y-10 pointer-events-none"></div>
             <img 
-              src="https://i.pinimg.com/originals/f0/f6/1a/f0f61a6e0d021d68bf1661ad6ed1e1a6.jpg" 
+              src="https://i.pinimg.com/vwebp/736x/bf/77/4d/bf774dd379e66237d5def465bc9fcd40.webp" 
               className="relative w-full max-w-xl lg:max-w-2xl h-[400px] md:h-[500px] lg:h-[700px] object-cover rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10"
               alt="Premium bedding detail"
               referrerPolicy="no-referrer"

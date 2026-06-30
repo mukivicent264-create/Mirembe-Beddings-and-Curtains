@@ -8,6 +8,7 @@ interface AllProductsPageProps {
   searchQuery: string;
   onClearSearch: () => void;
   onSearchChange: (query: string) => void;
+  onAddToCart?: () => void;
 }
 
 const containerVariants = {
@@ -33,7 +34,7 @@ const cardVariants = {
   }
 };
 
-export default function AllProductsPage({ searchQuery, onClearSearch, onSearchChange }: AllProductsPageProps) {
+export default function AllProductsPage({ searchQuery, onClearSearch, onSearchChange, onAddToCart }: AllProductsPageProps) {
   const [activeCategory, setActiveCategory] = useState<string>("All");
   const [isSearching, setIsSearching] = useState(false);
   const searchTimeoutRef = useRef<NodeJS.Timeout>();
@@ -194,10 +195,10 @@ export default function AllProductsPage({ searchQuery, onClearSearch, onSearchCh
               <motion.div 
                 key={product.id} 
                 variants={cardVariants}
-                className="group flex flex-col cursor-pointer"
+                className="group flex flex-col cursor-pointer relative"
               >
+                <Link to={`/products/${product.id}`} className="absolute inset-0 z-20"></Link>
                 <div className="relative overflow-hidden aspect-[4/5] rounded-2xl mb-3 sm:mb-5 bg-white shadow-sm group-hover:shadow-lg transition-shadow duration-500">
-                  <Link to={`/products/${product.id}`} className="absolute inset-0 z-20"></Link>
                   <img 
                     loading="lazy"
                     src={product.image} 
@@ -227,8 +228,7 @@ export default function AllProductsPage({ searchQuery, onClearSearch, onSearchCh
                       onClick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
-                        // Add to cart functionality would go here
-                        alert('Added to cart!');
+                        if (onAddToCart) onAddToCart();
                       }}
                       className="relative z-30 bg-pink-100 hover:bg-rose text-charcoal hover:text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-sm text-[8px] sm:text-[10px] font-bold tracking-widest uppercase transition-colors shadow-sm w-full xl:w-auto text-center flex items-center justify-center"
                     >
