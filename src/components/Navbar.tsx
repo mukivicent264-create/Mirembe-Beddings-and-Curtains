@@ -2,6 +2,7 @@ import { Search, Menu, X, Truck, RefreshCcw, ShieldCheck, User, Heart, ShoppingB
 import { useState, useEffect, useRef } from 'react';
 import { allProducts } from '../data/products';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import logo from '../assets/logo.png';
 
 interface NavbarProps {
   searchQuery: string;
@@ -101,7 +102,7 @@ export default function Navbar({ searchQuery, onSearchChange, cartCount = 0 }: N
             <div className="flex items-center cursor-pointer z-10 justify-start">
               <Link to="/" className="flex items-center">
                 <img 
-                  src="https://i.postimg.cc/C1dYyyWt/file-000000005aac71f4bb952c48a699e996.png" 
+                  src={logo} 
                   alt="Mirembe" 
                   className="h-16 md:h-24 w-auto object-contain" 
                   referrerPolicy="no-referrer"
