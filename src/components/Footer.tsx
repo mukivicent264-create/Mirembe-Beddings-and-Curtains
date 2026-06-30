@@ -51,7 +51,7 @@ export default function Footer() {
               <img 
                 src={logo} 
                 alt="Mirembe" 
-                className="h-20 w-40 md:h-24 md:w-48 object-contain shrink-0" 
+                className="h-16 sm:h-20 md:h-24 w-auto object-contain shrink-0" 
               />
             </a>
             <p className="text-white/60 text-sm leading-relaxed mb-8 max-w-sm">
