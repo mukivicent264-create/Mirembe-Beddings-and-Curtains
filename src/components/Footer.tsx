@@ -47,12 +47,11 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-y-12 gap-x-8 mb-16">
           {/* Column 1: Brand Info */}
           <div className="col-span-2 lg:col-span-2 flex flex-col pr-8">
-            <a href="#" className="inline-block mb-6 bg-white p-4 rounded-xl">
+            <a href="#" className="inline-block mb-6 bg-white p-4 rounded-xl w-fit">
               <img 
                 src={logo} 
                 alt="Mirembe" 
-                className="h-20 md:h-24 w-auto object-contain" 
-                referrerPolicy="no-referrer"
+                className="h-20 w-40 md:h-24 md:w-48 object-contain shrink-0" 
               />
             </a>
             <p className="text-white/60 text-sm leading-relaxed mb-8 max-w-sm">

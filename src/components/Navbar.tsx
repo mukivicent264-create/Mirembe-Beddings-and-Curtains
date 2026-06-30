@@ -104,8 +104,7 @@ export default function Navbar({ searchQuery, onSearchChange, cartCount = 0 }: N
                 <img 
                   src={logo} 
                   alt="Mirembe" 
-                  className="h-16 md:h-24 w-auto object-contain" 
-                  referrerPolicy="no-referrer"
+                  className="h-16 w-32 md:h-24 md:w-48 object-contain shrink-0" 
                 />
               </Link>
             </div>
