@@ -37,10 +37,38 @@ export default function AllProductsPage({ searchQuery, onClearSearch, onSearchCh
   const [activeCategory, setActiveCategory] = useState<string>("All");
   const [isSearching, setIsSearching] = useState(false);
   const searchTimeoutRef = useRef<NodeJS.Timeout>();
+  
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer) return;
+
+    let animationId: number;
+    // Start at current scroll position to avoid jumping
+    let scrollPos = scrollContainer.scrollLeft;
+
+    const scroll = () => {
+      if (!isHovered) {
+        scrollPos += 0.5; // Adjust speed here
+        // If we've scrolled past half the total scroll width (the first set of items), reset
+        if (scrollPos >= scrollContainer.scrollWidth / 2) {
+          scrollPos = 0;
+        }
+        scrollContainer.scrollLeft = scrollPos;
+      }
+      animationId = requestAnimationFrame(scroll);
+    };
+
+    animationId = requestAnimationFrame(scroll);
+
+    return () => cancelAnimationFrame(animationId);
+  }, [isHovered]);
 
   const handleSearchChange = (val: string) => {
     onSearchChange(val);
@@ -116,15 +144,36 @@ export default function AllProductsPage({ searchQuery, onClearSearch, onSearchCh
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Categories Navigation */}
-        <div className="flex gap-3 overflow-x-auto pb-4 mb-12 no-scrollbar border-b border-charcoal/10">
+        <div 
+          ref={scrollRef}
+          className="flex gap-3 overflow-x-auto pb-4 mb-12 no-scrollbar border-b border-charcoal/10"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          onTouchStart={() => setIsHovered(true)}
+          onTouchEnd={() => setIsHovered(false)}
+        >
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-6 py-3 rounded-sm text-xs font-bold tracking-widest uppercase whitespace-nowrap transition-all duration-300 mb-4 ${
+              className={`px-6 py-3 rounded-sm text-xs font-bold tracking-widest uppercase whitespace-nowrap transition-all duration-300 mb-4 border ${
                 activeCategory === category 
-                  ? 'bg-charcoal text-white shadow-md' 
-                  : 'bg-white text-charcoal/70 hover:bg-rose/10 hover:text-rose shadow-sm'
+                  ? 'bg-pink-100 border-rose text-charcoal shadow-md' 
+                  : 'bg-pink-50 border-transparent text-charcoal/70 hover:bg-pink-100/50 hover:text-charcoal shadow-sm'
+              }`}
+            >
+              {category}
+            </button>
+          ))}
+          {/* Duplicated for seamless auto scrolling */}
+          {categories.map((category) => (
+            <button
+              key={`dup-${category}`}
+              onClick={() => setActiveCategory(category)}
+              className={`px-6 py-3 rounded-sm text-xs font-bold tracking-widest uppercase whitespace-nowrap transition-all duration-300 mb-4 border ${
+                activeCategory === category 
+                  ? 'bg-pink-100 border-rose text-charcoal shadow-md' 
+                  : 'bg-pink-50 border-transparent text-charcoal/70 hover:bg-pink-100/50 hover:text-charcoal shadow-sm'
               }`}
             >
               {category}

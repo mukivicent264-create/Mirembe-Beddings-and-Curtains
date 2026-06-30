@@ -114,7 +114,7 @@ export default function Categories({ activeCategory, onSelectCategory }: Categor
           <motion.button 
             variants={itemVariants}
             onClick={() => onSelectCategory("All")}
-            className={`group relative flex items-center gap-4 bg-white p-2 pr-8 rounded-2xl shadow-sm hover:shadow-xl active:scale-95 transition-all w-[240px] border ${activeCategory === "All" ? "border-rose bg-rose/5" : "border-transparent"} cursor-pointer`}
+            className={`group relative flex items-center gap-4 p-2 pr-8 rounded-2xl shadow-sm hover:shadow-xl active:scale-95 transition-all w-[240px] border ${activeCategory === "All" ? "border-rose bg-pink-100" : "bg-pink-50 border-transparent"} cursor-pointer`}
           >
             <div className="w-16 h-16 flex-shrink-0 rounded-xl overflow-hidden bg-soft flex items-center justify-center">
               <span className="text-xl font-serif font-bold text-charcoal">All</span>
@@ -132,7 +132,7 @@ export default function Categories({ activeCategory, onSelectCategory }: Categor
               key={cat.id} 
               variants={itemVariants}
               onClick={() => onSelectCategory(cat.title)}
-              className={`group relative flex items-center gap-4 bg-white p-2 pr-8 rounded-2xl shadow-sm hover:shadow-xl active:scale-95 transition-all w-[240px] border ${activeCategory === cat.title ? "border-rose bg-rose/5" : "border-transparent"} cursor-pointer`}
+              className={`group relative flex items-center gap-4 p-2 pr-8 rounded-2xl shadow-sm hover:shadow-xl active:scale-95 transition-all w-[240px] border ${activeCategory === cat.title ? "border-rose bg-pink-100" : "bg-pink-50 border-transparent"} cursor-pointer`}
             >
               <div className="w-16 h-16 flex-shrink-0 rounded-xl overflow-hidden relative">
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors z-10"></div>
@@ -159,7 +159,7 @@ export default function Categories({ activeCategory, onSelectCategory }: Categor
               key={`dup-${cat.id}`} 
               variants={itemVariants}
               onClick={() => onSelectCategory(cat.title)}
-              className={`group relative flex items-center gap-4 bg-white p-2 pr-8 rounded-2xl shadow-sm hover:shadow-xl active:scale-95 transition-all w-[240px] border ${activeCategory === cat.title ? "border-rose bg-rose/5" : "border-transparent"} cursor-pointer`}
+              className={`group relative flex items-center gap-4 p-2 pr-8 rounded-2xl shadow-sm hover:shadow-xl active:scale-95 transition-all w-[240px] border ${activeCategory === cat.title ? "border-rose bg-pink-100" : "bg-pink-50 border-transparent"} cursor-pointer`}
             >
               <div className="w-16 h-16 flex-shrink-0 rounded-xl overflow-hidden relative">
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors z-10"></div>
