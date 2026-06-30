@@ -1,0 +1,6 @@
+{
+  "name": "Mirembe Beddings & Curtains",
+  "description": "Premium luxury e-commerce website for Mirembe Beddings & Curtains in Uganda.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
