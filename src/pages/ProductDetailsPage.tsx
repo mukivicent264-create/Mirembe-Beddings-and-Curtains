@@ -62,13 +62,13 @@ export default function ProductDetailsPage() {
     <div className="pt-32 pb-24 bg-warm min-h-screen">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         
-        <button 
-          onClick={() => navigate(-1)}
+        <Link 
+          to="/"
           className="inline-flex items-center gap-2 text-sm font-bold tracking-widest uppercase text-charcoal/60 hover:text-rose transition-colors mb-10"
         >
           <ArrowLeft className="w-4 h-4" />
-          Back to Shop
-        </button>
+          Back to Home
+        </Link>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 mb-32">
           {/* Image Gallery Column */}
@@ -127,16 +127,30 @@ export default function ProductDetailsPage() {
               </div>
             </div>
 
-            <button 
-              onClick={handleWhatsAppClick}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-rose text-white px-10 py-4 rounded-sm text-sm font-bold tracking-widest uppercase hover:bg-charcoal hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-xl"
-            >
-              Order via WhatsApp
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="22" y1="2" x2="11" y2="13"></line>
-                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-              </svg>
-            </button>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button 
+                onClick={handleWhatsAppClick}
+                className="flex-[3] inline-flex items-center justify-center gap-2 bg-charcoal text-white px-4 py-4 rounded-sm text-xs sm:text-sm font-bold tracking-widest uppercase hover:bg-charcoal/90 hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-xl"
+              >
+                Order via WhatsApp
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+              
+              <button 
+                onClick={() => alert('Added to cart!')}
+                className="flex-[2] inline-flex items-center justify-center gap-2 bg-rose text-white px-4 py-4 rounded-sm text-xs sm:text-sm font-bold tracking-widest uppercase hover:bg-rose/90 hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-xl"
+              >
+                Add to Cart
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0">
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+              </button>
+            </div>
           </motion.div>
         </div>
 
@@ -149,7 +163,7 @@ export default function ProductDetailsPage() {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, margin: "-50px" }}
-              className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8"
             >
               {relatedProducts.map((relatedProduct) => (
                 <motion.div 
@@ -175,12 +189,24 @@ export default function ProductDetailsPage() {
                       <h3 className="text-charcoal font-serif font-medium text-sm sm:text-xl group-hover:text-rose transition-colors line-clamp-2 sm:line-clamp-1">{relatedProduct.name}</h3>
                       <span className="font-serif font-bold text-xs sm:text-lg text-charcoal shrink-0">{relatedProduct.price}</span>
                     </div>
-                    <div className="flex items-center text-[10px] sm:text-xs font-bold uppercase tracking-widest text-charcoal/40 group-hover:text-rose transition-colors mt-2 sm:mt-3">
-                      <span className="border-b border-transparent group-hover:border-rose pb-0.5 transition-all">View Details</span>
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1 sm:ml-2 transform group-hover:translate-x-1 transition-transform sm:w-[14px] sm:h-[14px]">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                      </svg>
+                    <div className="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-3 mt-2 sm:mt-3">
+                      <div className="flex items-center text-[10px] sm:text-xs font-bold uppercase tracking-widest text-charcoal/40 group-hover:text-rose transition-colors">
+                        <span className="border-b border-transparent group-hover:border-rose pb-0.5 transition-all">View Details</span>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1 sm:ml-2 transform group-hover:translate-x-1 transition-transform sm:w-[14px] sm:h-[14px]">
+                          <line x1="5" y1="12" x2="19" y2="12"></line>
+                          <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                      </div>
+                      <button 
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          alert('Added to cart!');
+                        }}
+                        className="relative z-30 bg-pink-100 hover:bg-rose text-charcoal hover:text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-sm text-[8px] sm:text-[10px] font-bold tracking-widest uppercase transition-colors shadow-sm w-full xl:w-auto text-center flex items-center justify-center"
+                      >
+                        Add to Cart
+                      </button>
                     </div>
                   </div>
                 </motion.div>

@@ -101,7 +101,7 @@ export default function AllProductsPage({ searchQuery, onClearSearch, onSearchCh
       <div className="bg-charcoal text-white pt-32 pb-20 px-4">
         <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between items-end gap-8">
           <div className="max-w-2xl">
-            <Link to="/" className="inline-flex items-center gap-2 text-white/60 hover:text-rose transition-colors mb-6 text-sm font-bold uppercase tracking-widest">
+            <Link to="/" className="relative z-20 inline-flex items-center gap-2 text-white/60 hover:text-rose transition-colors mb-6 text-sm font-bold uppercase tracking-widest">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="19" y1="12" x2="5" y2="12"></line>
                 <polyline points="12 19 5 12 12 5"></polyline>
@@ -188,7 +188,7 @@ export default function AllProductsPage({ searchQuery, onClearSearch, onSearchCh
             initial="hidden"
             animate="show"
             key={`${activeCategory}-${searchQuery}`}
-            className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8"
           >
             {filteredProducts.map((product) => (
               <motion.div 
@@ -215,12 +215,25 @@ export default function AllProductsPage({ searchQuery, onClearSearch, onSearchCh
                     <span className="font-serif font-bold text-xs sm:text-lg text-charcoal shrink-0 mt-1 sm:mt-0">{product.price}</span>
                   </div>
                   <p className="text-charcoal/60 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2 leading-relaxed hidden sm:block">{product.description}</p>
-                  <div className="flex items-center text-[10px] sm:text-xs font-bold uppercase tracking-widest text-charcoal/40 group-hover:text-rose transition-colors mt-2 sm:mt-0">
-                    <span className="border-b border-transparent group-hover:border-rose pb-0.5 transition-all">View Details</span>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1 sm:ml-2 transform group-hover:translate-x-1 transition-transform sm:w-[14px] sm:h-[14px]">
-                      <line x1="5" y1="12" x2="19" y2="12"></line>
-                      <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
+                  <div className="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-3 mt-2 sm:mt-3">
+                    <div className="flex items-center text-[10px] sm:text-xs font-bold uppercase tracking-widest text-charcoal/40 group-hover:text-rose transition-colors">
+                      <span className="border-b border-transparent group-hover:border-rose pb-0.5 transition-all">View Details</span>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1 sm:ml-2 transform group-hover:translate-x-1 transition-transform sm:w-[14px] sm:h-[14px]">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </div>
+                    <button 
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        // Add to cart functionality would go here
+                        alert('Added to cart!');
+                      }}
+                      className="relative z-30 bg-pink-100 hover:bg-rose text-charcoal hover:text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-sm text-[8px] sm:text-[10px] font-bold tracking-widest uppercase transition-colors shadow-sm w-full xl:w-auto text-center flex items-center justify-center"
+                    >
+                      Add to Cart
+                    </button>
                   </div>
                 </div>
               </motion.div>
