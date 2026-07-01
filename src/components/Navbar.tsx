@@ -101,11 +101,9 @@ export default function Navbar({ searchQuery, onSearchChange, cartCount = 0 }: N
             <div className="flex items-center cursor-pointer z-10 justify-start">
               <Link to="/" className="flex items-center">
                 <img 
-                  src="https://i.postimg.cc/C1dYyyWt/file-000000005aac71f4bb952c48a699e996.png" 
+                  src="/logo.png" 
                   alt="Mirembe" 
                   className="h-10 sm:h-12 md:h-20 lg:h-24 w-auto object-contain shrink-0" 
-                  referrerPolicy="no-referrer"
-                  crossOrigin="anonymous"
                 />
               </Link>
             </div>

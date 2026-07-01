@@ -48,11 +48,9 @@ export default function Footer() {
           <div className="col-span-2 lg:col-span-2 flex flex-col pr-8">
             <a href="#" className="inline-block mb-6 bg-white p-4 rounded-xl w-fit">
               <img 
-                src="https://i.postimg.cc/C1dYyyWt/file-000000005aac71f4bb952c48a699e996.png" 
+                src="/logo.png" 
                 alt="Mirembe" 
                 className="h-16 sm:h-20 md:h-24 w-auto object-contain shrink-0" 
-                referrerPolicy="no-referrer"
-                crossOrigin="anonymous"
               />
             </a>
             <p className="text-white/60 text-sm leading-relaxed mb-8 max-w-sm">
