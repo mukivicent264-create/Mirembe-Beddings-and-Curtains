@@ -46,12 +46,15 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-y-12 gap-x-8 mb-16">
           {/* Column 1: Brand Info */}
           <div className="col-span-2 lg:col-span-2 flex flex-col pr-8">
-            <a href="#" className="inline-block mb-6 bg-white p-4 rounded-xl w-fit">
-              <img 
-                src="/logo.png" 
-                alt="Mirembe" 
-                className="h-16 sm:h-20 md:h-24 w-auto object-contain shrink-0" 
-              />
+            <a href="#" className="inline-block mb-6 bg-white p-4 sm:p-6 rounded-xl w-fit">
+              <div className="flex flex-col justify-center items-start">
+                <span className="text-rose font-serif font-black text-2xl sm:text-3xl md:text-4xl leading-none tracking-tight">
+                  MIREMBE
+                </span>
+                <span className="text-rose/80 font-sans font-bold text-[10px] sm:text-xs md:text-sm tracking-[0.2em] md:tracking-[0.3em] uppercase mt-1">
+                  Beddings & Curtains
+                </span>
+              </div>
             </a>
             <p className="text-white/60 text-sm leading-relaxed mb-8 max-w-sm">
               Bringing comfort, luxury, and timeless elegance to homes across

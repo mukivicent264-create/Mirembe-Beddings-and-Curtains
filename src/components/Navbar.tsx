@@ -99,12 +99,13 @@ export default function Navbar({ searchQuery, onSearchChange, cartCount = 0 }: N
           <div className="flex justify-between lg:grid lg:grid-cols-[1fr_auto_1fr] lg:gap-4 xl:gap-8 items-center min-h-[4rem] md:min-h-[6rem]">
             {/* Logo */}
             <div className="flex items-center cursor-pointer z-10 justify-start">
-              <Link to="/" className="flex items-center">
-                <img 
-                  src="/logo.png" 
-                  alt="Mirembe" 
-                  className="h-10 sm:h-12 md:h-20 lg:h-24 w-auto object-contain shrink-0" 
-                />
+              <Link to="/" className="flex flex-col justify-center items-start">
+                <span className="text-rose font-serif font-black text-xl sm:text-2xl md:text-3xl lg:text-4xl leading-none tracking-tight">
+                  MIREMBE
+                </span>
+                <span className="text-rose/80 font-sans font-bold text-[8px] sm:text-[10px] md:text-xs tracking-[0.2em] md:tracking-[0.3em] uppercase mt-1">
+                  Beddings & Curtains
+                </span>
               </Link>
             </div>
             
